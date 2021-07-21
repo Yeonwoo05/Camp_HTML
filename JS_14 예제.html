@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로또 번호 생성</title>
+
+    <script>
+        function loto()
+        {
+            var arr = new Array(6);
+            
+            for(i = 0 ; i < arr.length; i++)
+            {
+                cnt = 99;
+                while(cnt != i)
+                {
+                    arr[i] =  Math.floor(Math.random() * 45 + 1);
+                    cnt = 0;
+                    for(j = 0 ; j < i; j++)
+                    {
+                        if(arr[i] == arr[j])
+                        {
+                            break;
+                        }
+                        cnt++;
+                    }
+            }
+            }
+
+            document.write("생성된 로또 번호는 ");
+            for(i = 0; i < 6; i ++)
+            {
+                document.write("<strong>" +arr[i] + " </strong>")
+            }
+            document.write("입니다!<br>");
+            
+        }
+        
+    </script>
+</head>
+<body>
+    <h3>로또 번호 생성</h3>
+    <hr>
+    <button style="width: 10ex; height: 5ex;"onclick="loto()" ></button>
+</body>
+</html>

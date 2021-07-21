@@ -1,0 +1,16 @@
+
+body{
+    background-color:  linen;
+    color: brown;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+h3{
+    text-align: center;
+    color: darkred;
+}
+hr{
+    border: 10px solid darkgoldenrod;
+}
+span{color:  burlywood; font-size: 20px;}
+

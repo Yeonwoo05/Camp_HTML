@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>살아온 날짜 계산하기</title>
+</head>
+<body>
+    <h3>
+        살아온 날짜 계산
+    </h3>
+    <hr>
+    <script>
+        var currentyear;
+        var currentmonth;
+        var currentday;
+        var birthyear;
+        var birthmonth;
+        var birthday;
+        var day = 0;
+
+        birthyear =parseInt( prompt("태어난 연도를 입력하세요. (YYYY)",""));
+        birthmonth =parseInt( prompt("태어난 월을 입력하세요. (MM)",""));
+        birthday = parseInt(prompt("태어난 일을 입력하세요. (YY)",""));
+
+        currentyear = parseInt(prompt("현재연도를 입력하세요. (YYYY)",""));
+        currentmonth = parseInt(prompt("현재 월을 입력하세요. (MM)",""));
+        currentday = parseInt(prompt("현재 일을 입력하세요. (YY)",""));
+
+        mon=0;
+        switch(birthmonth)
+        {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:  
+            mon = 31; break;
+            case 2: mon = 28; break;
+            default : mon = 30; break;
+        }
+        
+        if(birthyear != currentyear)
+        {
+            day += mon - birthday;
+            day += currentday;
+            for(j= birthmonth; j <= 12; j++)
+            {
+                chose = 0;
+                if((birthyear % 4 == 0) && (birthyear %100 != 0) || (birthyear % 400 == 0))
+                {
+                    chose = 1;
+                }
+                mon=0;
+                switch(j)
+                {
+                    case 1:
+                    case 3:
+                    case 5:
+                    case 7:
+                    case 8:
+                    case 10:
+                    case 12:  
+                    mon = 31; break;
+                    case 2: mon = 28; break;
+                    default : mon = 30; break;
+                }
+                day += mon + chose;
+            }
+        
+            for(i = birthyear+1; i <currentyear;i++)
+            {
+                month = 12;
+                chose = 0;
+                if(i == currentyear) month = currentmonth;
+                if((birthyear % 4 == 0) && (birthyear %100 != 0) || (birthyear % 400 == 0))
+                {
+                    chose = 1;
+                }
+                for(j= 1; j <= month; j++)
+                {
+                    mon=0;
+                    switch(j)
+                    {
+                        case 1:
+                        case 3:
+                        case 5:
+                        case 7:
+                        case 8:
+                        case 10:
+                        case 12:  
+                        mon = 31; break;
+                        case 2: mon = 28; break;
+                        default : mon = 30; break;
+                    }
+
+                    day += mon + chose;
+                }
+            }
+        }
+
+        else if(birthyear == currentyear)
+        {
+            if(birthmonth == currentmonth)
+                day = currentday - birthday;
+            else 
+            {
+                for(j= birthmonth; j < currentmonth; j++)
+                {
+                    chose = 0;
+                    if((birthyear % 4 == 0) && (birthyear %100 != 0) || (birthyear % 400 == 0))
+                    {
+                        chose = 1;
+                    }
+                    mon=0;
+                    switch(j)
+                    {
+                        case 1:
+                        case 3:
+                        case 5:
+                        case 7:
+                        case 8:
+                        case 10:
+                        case 12:  
+                        mon = 31; break;
+                        case 2: mon = 28; break;
+                        default : mon = 30; break;
+                    }
+                    day += mon + chose;
+                }
+            }
+        }
+        document.write(birthyear +"년 " + birthmonth + "월 " + birthday +"일부터 " +currentyear + "년 " + currentmonth + "월 " +currentday + "일 까지 살아온 날짜수는 <br>" +day +"일 입니다!");
+    </script>
+</body>
+</html>
